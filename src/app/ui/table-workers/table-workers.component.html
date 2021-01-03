@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row" *ngIf="workers.length > 0">
+        <div class="col-12">
+            <h5>{{title}}</h5>
+        </div>
+    
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col" [style.width]="'100px'">id</th>
+        <th scope="col" [style.width]="'30%'">name</th>
+        <th scope="col" [style.width]="'30%'">surname</th>
+        <th scope="col" [style.width]="'40%'">phone</th>
+        <th scope="col" [style.width]="'150px'"></th>
+        <th scope="col" [style.width]="'150px'"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let worker of workers" [formGroup]="editForm">
+        <th scope="row">{{worker.id}}</th>
+        <td>{{worker.name}}
+            <input 
+                type="text" 
+                class="form-control mt-2 display-none {{worker.id}}" 
+                placeholder="Введите новое имя" 
+                formControlName="editName"
+            ></td>
+        <td>{{worker.surname}}
+            <input 
+                type="text" 
+                class="form-control mt-2 display-none {{worker.id}}" 
+                placeholder="Введите новую фамилию" 
+                formControlName="editSurname"
+            ></td>
+        <td>{{worker.phone}}
+          <input 
+              type="tel" 
+              prefix="+7"
+              mask="(000)000-00-00"
+              class="form-control mt-2 display-none {{worker.id}}" 
+              placeholder="Введите новый телефон" 
+              formControlName="editPhone"
+          ></td>    
+        <td><button class="btn btn-outline-dark btn-sm"  (click)="onEditWorker(worker.id)">Edit</button>
+            <button 
+                class="btn btn-outline-info btn-sm mt-2 display-none {{worker.id}}" 
+                (click)="save(worker.id)" 
+            >
+                Save
+            </button>
+        </td>
+        <td><button class="btn btn-outline-danger btn-sm" (click)="onDeleteWorker(worker.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div> 
