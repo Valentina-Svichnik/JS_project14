@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpWorkersService } from './shared/services/http-workers.service';
 import { MyWorker, MyWorkersDatabase, MyWorkerType } from './shared/worker.model';
 
 @Component({
@@ -6,10 +7,16 @@ import { MyWorker, MyWorkersDatabase, MyWorkerType } from './shared/worker.model
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Список сотрудников';
   workers: MyWorker[] = MyWorkersDatabase;
   MyWorkerType = MyWorkerType;
+
+  constructor(private HttpWorkersService: HttpWorkersService) { }
+
+  ngOnInit() {
+    this.HttpWorkersService.mySuperFunc('Its working!');
+  }
   
 
   getByType(type: number) {

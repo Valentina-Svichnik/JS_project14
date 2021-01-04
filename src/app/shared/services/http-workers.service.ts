@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class HttpWorkersService {
 
   constructor() { }
+
+  mySuperFunc(str: string) {
+    console.log(str);
+  }
 }
