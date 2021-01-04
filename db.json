@@ -1,0 +1,32 @@
+{
+  "workers": [
+    {
+      "id":1, 
+      "name": "Ivan", 
+      "surname": "Ivanov", 
+      "type": 0, 
+      "phone":"89456765426"
+    },
+    {
+      "id":2, 
+      "name": "Pert", 
+      "surname": "Pertov", 
+      "type": 1, 
+      "phone":"89456705426"
+    },
+    {
+      "id":3, 
+      "name": "Sidor", 
+      "surname": "Sidorov", 
+      "type": 2, 
+      "phone":"89656765426"
+    },
+    {
+      "id":4, 
+      "name": "Vasiliy", 
+      "surname": "Vasilievich", 
+      "type": 0, 
+      "phone":"89456265426"
+    }
+  ]
+}
