@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { promise } from 'protractor';
 import { MyWorker } from '../worker.model';
 
 @Injectable({
@@ -21,5 +20,17 @@ export class HttpWorkersService {
 
   deleteWorker(id: number) {
     return this.http.delete(this.routeApi + '/' + id).toPromise();
+  }
+  
+  saveWorker(newWorker: MyWorker) {
+    let data = {
+      id: newWorker[0],
+      name: newWorker[1],
+      surname: newWorker[2],
+      phone: newWorker[3],
+      type: newWorker[4]
+    };
+    let id = newWorker[0];
+    return this.http.put(this.routeApi + '/' + id, data).toPromise();
   }
 }

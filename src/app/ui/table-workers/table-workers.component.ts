@@ -35,7 +35,7 @@ export class TableWorkersComponent implements OnInit {
 
   onEditWorker(id: number) {
     let form = document.getElementsByClassName(String(id));
-    this.editWorker.emit(id);
+    // this.editWorker.emit(id);
     form[0].classList.add("display-block");
     form[1].classList.add("display-block");
     form[2].classList.add("display-block");
@@ -46,7 +46,7 @@ export class TableWorkersComponent implements OnInit {
     form[3].classList.remove("display-none");
   }
 
-  save(id: number) {
+  save(id: number, type: number) {
     let form = document.getElementsByClassName(String(id));
     form[0].classList.add("display-none");
     form[1].classList.add("display-none");
@@ -56,10 +56,7 @@ export class TableWorkersComponent implements OnInit {
     form[1].classList.remove("display-block");
     form[2].classList.remove("display-block");
     form[3].classList.remove("display-block");
-    let newWorker = [id, this.editForm.value.editName, this.editForm.value.editSurname, this.editForm.value.editPhone];
-    // this.editName = '';
-    // this.editSurname = '';
-    // this.editPhone = '';
+    let newWorker = [id, this.editForm.value.editName, this.editForm.value.editSurname, this.editForm.value.editPhone, type];
     this.saveWorker.emit(newWorker);
   }
 

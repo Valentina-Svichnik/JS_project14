@@ -45,7 +45,7 @@
         <td><button class="btn btn-outline-dark btn-sm"  (click)="onEditWorker(worker.id)">Edit</button>
             <button 
                 class="btn btn-outline-info btn-sm mt-2 display-none {{worker.id}}" 
-                (click)="save(worker.id)" 
+                (click)="save(worker.id, worker.type)" 
             >
                 Save
             </button>

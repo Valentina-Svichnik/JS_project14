@@ -32,12 +32,6 @@ export class AppComponent implements OnInit {
   }
 
   async onDeleteWorker(id: number) {
-    // let index = this.workers.findIndex(worker => 
-    //   worker.id === id);
-    //   if (index !== -1) {
-    //     this.workers.splice(index, 1);
-    //   }
-
       try{
           await this.HttpWorkersService.deleteWorker(id);
       } catch(err) {
@@ -47,32 +41,32 @@ export class AppComponent implements OnInit {
       }
   }
 
-  save(newWorker) {
-    for(let worker of this.workers){
-      if (worker.id == newWorker[0]) {
-        worker.name = newWorker[1];
-        worker.surname = newWorker[2];
-        worker.phone = newWorker[3];
-      }
-    }
-  }
-
-  async onAddWorker(worker: MyWorker) {
+  async save(worker) {
     try{
-      const id = 
-      this.workers.length > 0 
-        ? this.workers[this.workers.length - 1].id + 1 
-        : 0;
-      worker.id = id;
-      if (worker.name !== undefined && worker.surname !== undefined && worker.phone !== undefined && worker.name && worker.surname && worker.phone) {
-        await this.HttpWorkersService.postWorkers(worker);
-      } else {
-        alert('Пожалуйста, введите имя, фамилию и телефон работника');
-      }
-    } catch (err) {
+      await this.HttpWorkersService.saveWorker(worker);
+    } catch(err) {
       console.error(err);
     } finally {
       this.getData();
     }
+  }
+
+    async onAddWorker(worker: MyWorker) {
+      try {
+        const id =
+          this.workers.length > 0
+            ? this.workers[this.workers.length - 1].id + 1
+            : 0;
+        worker.id = id;
+        if (worker.name !== undefined && worker.surname !== undefined && worker.phone !== undefined && worker.name && worker.surname && worker.phone) {
+          await this.HttpWorkersService.postWorkers(worker);
+        } else {
+          alert('Пожалуйста, введите имя, фамилию и телефон работника');
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        this.getData();
+      }
   }
 }
