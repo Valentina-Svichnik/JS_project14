@@ -18,4 +18,8 @@ export class HttpWorkersService {
   postWorkers(data: MyWorker){
     this.http.post(this.routeApi, data).toPromise();
   }
+
+  deleteWorker(id: number) {
+    return this.http.delete(this.routeApi + '/' + id).toPromise();
+  }
 }

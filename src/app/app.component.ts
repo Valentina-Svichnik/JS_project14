@@ -31,11 +31,19 @@ export class AppComponent implements OnInit {
     worker.type === type);
   }
 
-  onDeleteWorker(id: number) {
-    let index = this.workers.findIndex(worker => 
-      worker.id === id);
-      if (index !== -1) {
-        this.workers.splice(index, 1);
+  async onDeleteWorker(id: number) {
+    // let index = this.workers.findIndex(worker => 
+    //   worker.id === id);
+    //   if (index !== -1) {
+    //     this.workers.splice(index, 1);
+    //   }
+
+      try{
+          await this.HttpWorkersService.deleteWorker(id);
+      } catch(err) {
+        console.error(err);
+      } finally {
+        this.getData();
       }
   }
 
@@ -50,20 +58,8 @@ export class AppComponent implements OnInit {
   }
 
   async onAddWorker(worker: MyWorker) {
-    // console.log(worker);
-    let id = 
-      this.workers.length > 0 
-        ? this.workers[this.workers.length - 1].id + 1 
-        : 0;
-    worker.id = id;
-    if (worker.name !== undefined && worker.surname !== undefined && worker.phone !== undefined && worker.name && worker.surname && worker.phone) {
-      this.workers.push(worker);
-    } else {
-      alert('Пожалуйста, введите имя, фамилию и телефон работника');
-    }
-
     try{
-      let id = 
+      const id = 
       this.workers.length > 0 
         ? this.workers[this.workers.length - 1].id + 1 
         : 0;
@@ -75,6 +71,8 @@ export class AppComponent implements OnInit {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      this.getData();
     }
   }
 }

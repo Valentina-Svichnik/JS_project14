@@ -1,13 +1,6 @@
 {
   "workers": [
     {
-      "id": 1,
-      "name": "Ivan",
-      "surname": "Ivanov",
-      "type": 0,
-      "phone": "89456765426"
-    },
-    {
       "id": 2,
       "name": "Pert",
       "surname": "Petrov",
@@ -27,20 +20,6 @@
       "surname": "Vasilev",
       "type": 3,
       "phone": "89456765426"
-    },
-    {
-      "id": 5,
-      "name": "Test",
-      "surname": "Testovich",
-      "type": 3,
-      "phone": "89406765426"
-    },
-    {
-      "name": "name",
-      "surname": "surname",
-      "type": 0,
-      "phone": "789",
-      "id": 7
     }
   ]
 }
