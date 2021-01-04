@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 1, 
+      "name": "Ivan", 
+      "surname": "Ivanov", 
+      "type": 0, 
+      "phone":"89456765426"
+    },
+    {
+      "id": 2, 
+      "name": "Pert", 
+      "surname": "Petrov", 
+      "type": 1, 
+      "phone":"89456705426"
+    },
+    {
+      "id": 3, 
+      "name": "Sidor", 
+      "surname": "Sidorov", 
+      "type": 2, 
+      "phone":"89496765426"
+    },
+    {
+      "id": 4, 
+      "name": "Vasiliy", 
+      "surname": "Vasilev", 
+      "type": 3, 
+      "phone":"89456765426"
+    }
+  ]
+}
