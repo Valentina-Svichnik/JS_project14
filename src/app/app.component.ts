@@ -9,7 +9,7 @@ import { MyWorker, MyWorkersDatabase, MyWorkerType } from './shared/worker.model
 })
 export class AppComponent implements OnInit {
   title = 'Список сотрудников';
-  workers: MyWorker[] = MyWorkersDatabase;
+  workers: MyWorker[] = [];
   MyWorkerType = MyWorkerType;
 
   constructor(private HttpWorkersService: HttpWorkersService) { }
