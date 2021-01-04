@@ -31,12 +31,16 @@ export class AddformWorkerComponent implements OnInit {
   
 
   onAddWorker() {
-    let worker: MyWorker = {
-      name: this.myForm.value.name,
-      surname: this.myForm.value.surname,
-      type: this.myForm.value.type,
-      phone: this.myForm.value.phone
-    };
-    this.addWorker.emit(worker);
+    try{
+      let worker: MyWorker = {
+        name: this.myForm.value.name,
+        surname: this.myForm.value.surname,
+        type: this.myForm.value.type,
+        phone: this.myForm.value.phone
+      };
+      this.addWorker.emit(worker);  
+    } catch (err) {
+      console.error(err);
+    }
   }
 }

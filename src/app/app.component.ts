@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpWorkersService } from './shared/services/http-workers.service';
-import { MyWorker, MyWorkersDatabase, MyWorkerType } from './shared/worker.model';
+import { MyWorker, MyWorkerType } from './shared/worker.model';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +15,16 @@ export class AppComponent implements OnInit {
   constructor(private HttpWorkersService: HttpWorkersService) { }
 
   ngOnInit() {
-    this.HttpWorkersService.mySuperFunc('Its working!');
+    this.getData();
   }
   
+  async getData() {
+    try{
+      this.workers = await this.HttpWorkersService.getWorkers();
+    } catch(err) {
+      console.error(err);
+    }
+  }
 
   getByType(type: number) {
     return this.workers.filter((worker) => 
@@ -42,7 +49,8 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onAddWorker(worker: MyWorker) {
+  async onAddWorker(worker: MyWorker) {
+    // console.log(worker);
     let id = 
       this.workers.length > 0 
         ? this.workers[this.workers.length - 1].id + 1 
@@ -52,6 +60,21 @@ export class AppComponent implements OnInit {
       this.workers.push(worker);
     } else {
       alert('Пожалуйста, введите имя, фамилию и телефон работника');
+    }
+
+    try{
+      let id = 
+      this.workers.length > 0 
+        ? this.workers[this.workers.length - 1].id + 1 
+        : 0;
+      worker.id = id;
+      if (worker.name !== undefined && worker.surname !== undefined && worker.phone !== undefined && worker.name && worker.surname && worker.phone) {
+        await this.HttpWorkersService.postWorkers(worker);
+      } else {
+        alert('Пожалуйста, введите имя, фамилию и телефон работника');
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
 }
